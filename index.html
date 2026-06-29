@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>GestureDigit AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-icon">🖐</span>
+      <span class="logo-text">GestureDigit<em>AI</em></span>
+      <span class="badge">OpenCV · MediaPipe</span>
+    </div>
+    <div class="hright">
+      <div class="dot" id="dot"></div>
+      <span class="slabel" id="slabel">Connecting…</span>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+  <div class="hero">
+    <h1>Hand Gesture <span class="grad">&amp; Digit</span> Recognition</h1>
+    <p>Show your hand — AI detects gestures <em>and</em> reads finger count as a number in real time.</p>
+  </div>
+
+  <div class="layout">
+
+    <!-- Camera -->
+    <div class="cam-wrap card">
+      <div class="card-top">
+        <span class="ctitle">📷 Live Camera</span>
+        <span class="fps-pill" id="fpsPill">— FPS</span>
+      </div>
+      <div class="feed-box">
+        <img id="feed" src="/video_feed" alt="feed"/>
+        <div class="feed-ov" id="feedOv">
+          <div style="font-size:2.5rem">📷</div>
+          <div>Camera loading…</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right panel -->
+    <div class="rpanel">
+
+      <!-- Dual display: Digit + Gesture -->
+      <div class="dual-card card">
+        <div class="card-top">
+          <span class="ctitle">🔍 Recognition</span>
+          <span class="hands-pill" id="handsPill">0 hands</span>
+        </div>
+        <div class="dual-body">
+          <!-- Digit side -->
+          <div class="digit-side">
+            <div class="side-label">DIGIT</div>
+            <div class="big-digit" id="bigDigit">—</div>
+            <div class="digit-name" id="digitName">—</div>
+          </div>
+          <div class="divider"></div>
+          <!-- Gesture side -->
+          <div class="gesture-side">
+            <div class="side-label">GESTURE</div>
+            <div class="big-emoji" id="bigEmoji">🖐</div>
+            <div class="gesture-name" id="gestureName">Waiting…</div>
+          </div>
+        </div>
+        <div class="color-bar" id="colorBar"></div>
+      </div>
+
+      <!-- Finger indicators -->
+      <div class="fingers-card card">
+        <div class="card-top"><span class="ctitle">🖐 Finger Status</span></div>
+        <div class="fingers-row" id="fingersRow">
+          <div class="finger-item" id="f0"><div class="f-circle off"></div><div class="f-name">Thumb</div></div>
+          <div class="finger-item" id="f1"><div class="f-circle off"></div><div class="f-name">Index</div></div>
+          <div class="finger-item" id="f2"><div class="f-circle off"></div><div class="f-name">Middle</div></div>
+          <div class="finger-item" id="f3"><div class="f-circle off"></div><div class="f-name">Ring</div></div>
+          <div class="finger-item" id="f4"><div class="f-circle off"></div><div class="f-name">Pinky</div></div>
+        </div>
+      </div>
+
+      <!-- History log -->
+      <div class="log-card card">
+        <div class="card-top">
+          <span class="ctitle">📋 Detection Log</span>
+          <button class="clr-btn" id="clrBtn">Clear</button>
+        </div>
+        <ul class="log-list" id="logList">
+          <li class="log-empty">No detections yet…</li>
+        </ul>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-card card">
+        <div class="card-top"><span class="ctitle">📊 Session Stats</span></div>
+        <div class="stats-row">
+          <div class="stat"><span class="sv" id="sTot">0</span><span class="sk">Total</span></div>
+          <div class="stat"><span class="sv" id="sGest">0</span><span class="sk">Gestures</span></div>
+          <div class="stat"><span class="sv" id="sDigit">0</span><span class="sk">Digits</span></div>
+          <div class="stat"><span class="sv" id="sFps">0</span><span class="sk">FPS</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Reference grid -->
+  <section class="ref-sec">
+    <h2 class="ref-h">Gesture + Digit Reference</h2>
+    <div class="ref-tabs">
+      <button class="tab active" data-tab="both">All</button>
+      <button class="tab" data-tab="gesture">Gestures</button>
+      <button class="tab" data-tab="digit">Digits</button>
+    </div>
+    <div class="ref-grid" id="refGrid"></div>
+  </section>
+
+</main>
+
+<footer class="footer">OpenCV · MediaPipe · Flask · Python &nbsp;|&nbsp; GestureDigit AI 2025</footer>
+
+<script src="/static/js/main.js"></script>
+</body>
+</html>
